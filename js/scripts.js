@@ -1,8 +1,8 @@
 let numberOfAvailableGuesses = 5
 let generatedRandomNumber = Math.floor(Math.random() * 100) + 1
-
-console.log('generatedRandomNumber', generatedRandomNumber)
-
+console.log('====================================');
+console.log('generatedRandomNumber', generatedRandomNumber);
+console.log('====================================');
 
 function guessNumber() {
   if (numberOfAvailableGuesses === 0) {
@@ -29,15 +29,15 @@ function guessNumber() {
   if (guess === generatedRandomNumber) {
     document.getElementById('userPrompt').style.color = 'black'
     document.getElementById('userPrompt').innerHTML = `Your guess of <span style='color: green'>${guess}</span> is correct!`
+    document.getElementById('userPrompt').innerHTML = `You <span style='color: green; font-size: 35px'>won</span> with a guess of <span style='color: green; font-size: 35px'>${guess}</span> is low`
     document.getElementById('guessPrompt').classList.add('alert-success')
     document.getElementById('guessPrompt').classList.remove('alert-danger')
     document.getElementById('resetGameButton').style.visibility = 'hidden'
-    document.getElementById('guessPrompt').innerHTML = 'Correct guess!'
+    document.getElementById('guessPrompt').innerHTML = `You <span style='color: green'>won</span>!`
     document.getElementById('numberOfRemainingGuesses').innerHTML = 5
     numberOfAvailableGuesses = 5
     document.getElementById('guess').value = ''
     generatedRandomNumber = Math.floor(Math.random() * 100) + 1
-    console.log('generatedRandomNumber', generatedRandomNumber)
     return
   }
 
