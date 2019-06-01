@@ -1,11 +1,14 @@
-let numberOfAvailableGuesses = 10
+let numberOfAvailableGuesses = 5
 let generatedRandomNumber = Math.floor(Math.random() * 100) + 1
 
 console.log('generatedRandomNumber', generatedRandomNumber)
 
 
 function guessNumber() {
-  if (numberOfAvailableGuesses === 0) return
+  if (numberOfAvailableGuesses === 0) {
+    document.getElementById('userPrompt').innerHTML = `Game Over!`
+    return
+  }
 
   const guess = parseInt(document.getElementById('guess').value)
   document.getElementById('guessPrompt').style.visibility = 'visible'
@@ -30,8 +33,8 @@ function guessNumber() {
     document.getElementById('guessPrompt').classList.remove('alert-danger')
     document.getElementById('resetGameButton').style.visibility = 'hidden'
     document.getElementById('guessPrompt').innerHTML = 'Correct guess!'
-    document.getElementById('numberOfRemainingGuesses').innerHTML = 10
-    numberOfAvailableGuesses = 10
+    document.getElementById('numberOfRemainingGuesses').innerHTML = 5
+    numberOfAvailableGuesses = 5
     document.getElementById('guess').value = ''
     generatedRandomNumber = Math.floor(Math.random() * 100) + 1
     console.log('generatedRandomNumber', generatedRandomNumber)
@@ -40,13 +43,20 @@ function guessNumber() {
 
   document.getElementById('guess').value = ''
   numberOfAvailableGuesses -= 1
+
   document.getElementById('numberOfRemainingGuesses').innerHTML = numberOfAvailableGuesses
+
+  if (numberOfAvailableGuesses === 0) {
+    document.getElementById('userPrompt').innerHTML = `Game Over!`
+    return
+  }
 }
 
 function resetGame() {
   generatedRandomNumber = Math.floor(Math.random() * 100) + 1
   document.getElementById('resetGameButton').style.visibility = 'hidden'
   document.getElementById('guessPrompt').style.visibility = 'hidden'
-  document.getElementById('numberOfRemainingGuesses').innerHTML = 10
-  numberOfAvailableGuesses = 10
+  document.getElementById('numberOfRemainingGuesses').innerHTML = 5
+  document.getElementById('userPrompt').innerHTML = `New Game`
+  numberOfAvailableGuesses = 5
 }
