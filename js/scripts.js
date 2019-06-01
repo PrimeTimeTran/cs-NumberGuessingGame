@@ -1,30 +1,52 @@
 let numberOfAvailableGuesses = 10
+let generatedRandomNumber = Math.floor(Math.random() * 100) + 1
+
+console.log('generatedRandomNumber', generatedRandomNumber)
+
 
 function guessNumber() {
-  if (numberOfAvailableGuesses  === 0 ) {
-    return
-  }
-  const generatedRandomNumber = '10'
-  const guess = document.getElementById('guess').value
+  if (numberOfAvailableGuesses === 0) return
+
+  const guess = parseInt(document.getElementById('guess').value)
+  document.getElementById('guessPrompt').style.visibility = 'visible'
+  document.getElementById('resetGameButton').style.visibility = 'visible'
 
   if (guess < generatedRandomNumber) {
-    document.getElementById('wrongGuess').style.visibility = 'visible'
+    document.getElementById('guessPrompt').innerHTML = 'Too Low!'
+    document.getElementById('guessPrompt').classList.add('alert-danger')
+    document.getElementById('userPrompt').innerHTML = `<span style='color: red; font-size: 35px'>${guess}</span> is low`
   }
 
   if (guess > generatedRandomNumber) {
-    document.getElementById('wrongGuess').style.visibility = 'visible'
+    document.getElementById('guessPrompt').innerHTML = 'Too High!'
+    document.getElementById('guessPrompt').classList.add('alert-danger')
+    document.getElementById('userPrompt').innerHTML = `<span style='color: red; font-size: 35px'>${guess}</span> is high`
   }
 
   if (guess === generatedRandomNumber) {
-    document.getElementById('correctGuess').style.visibility = 'visible'
+    document.getElementById('userPrompt').style.color = 'black'
+    document.getElementById('userPrompt').innerHTML = `Your guess of <span style='color: green'>${guess}</span> is correct!`
+    document.getElementById('guessPrompt').classList.add('alert-success')
+    document.getElementById('guessPrompt').classList.remove('alert-danger')
+    document.getElementById('resetGameButton').style.visibility = 'hidden'
+    document.getElementById('guessPrompt').innerHTML = 'Correct guess!'
+    document.getElementById('numberOfRemainingGuesses').innerHTML = 10
+    numberOfAvailableGuesses = 10
+    document.getElementById('guess').value = ''
+    generatedRandomNumber = Math.floor(Math.random() * 100) + 1
+    console.log('generatedRandomNumber', generatedRandomNumber)
+    return
   }
+
   document.getElementById('guess').value = ''
-  const remainingGuesses = document.getElementById('numberOfRemainingGuesses').innerHTML
-  document.getElementById('numberOfRemainingGuesses').innerHTML = parseInt(remainingGuesses) - 1
   numberOfAvailableGuesses -= 1
+  document.getElementById('numberOfRemainingGuesses').innerHTML = numberOfAvailableGuesses
 }
 
 function resetGame() {
-  numberOfAvailableGuesses = 10
+  generatedRandomNumber = Math.floor(Math.random() * 100) + 1
+  document.getElementById('resetGameButton').style.visibility = 'hidden'
+  document.getElementById('guessPrompt').style.visibility = 'hidden'
   document.getElementById('numberOfRemainingGuesses').innerHTML = 10
+  numberOfAvailableGuesses = 10
 }

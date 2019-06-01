@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>The HTML5 Herald</title>
+  <title>Number Guessing</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
 
@@ -14,22 +14,26 @@
 </head>
 
 <body>
+  <div class="container d-flex p-2 flex-column" style="justify-content: center; align-items: center; margin-top: 20vh; border: 10px solid black; border-radius: 25px">
+    <h3 id="userPrompt" >
+      Guess a number between 1-100 and win!
+    </h3>
+    <h1 id="numberOfRemainingGuesses" style="font-size: 100px">
+      10
+    </h1>
     <input type="text" id="guess"/>
-    <h1 id="numberOfRemainingGuesses">10</h1>
-    <button onclick="guessNumber()">
-        Guess!
+    <button class="btn btn-primary btn-lg " style="margin-top: 15px" onclick="guessNumber()">
+      Guess!
     </button>
-
-    <div class="alert alert-danger" role="alert" style="visibility: hidden" id="wrongGuess">
-        Your guess was wrong!
-    </div>
-
-    <div class="alert alert-success" role="alert" style="visibility: hidden" id="correctGuess">
-            You're Correct! You guessed, correctly!
-    </div>
-    <button onclick="resetGame()">
+    <div class="alert" style="visibility: hidden; margin-top: 15px" role="alert" id="guessPrompt">
+      
+      </div>
+    <div class="container col-12" style="display: flex; justify-content: center; margin-top: 15px">
+      <button id="resetGameButton" class="btn btn-success btn-lg" style="visibility: hidden" onclick="resetGame()">
         Reset Game!
-    </button>
+      </button>
+    </div>
+  </div>
 
   <script src="js/scripts.js"></script>
 </body>
