@@ -1,62 +1,63 @@
 let numberOfAvailableGuesses = 3
-document.getElementById('prompt').innerHTML = numberOfAvailableGuesses
+const prompt = document.getElementById('prompt')
+prompt.innerHTML = numberOfAvailableGuesses
 let randomNumber = Math.floor(Math.random() * 100 + 1)
-console.log('randomNumber', randomNumber);
-
+console.log('Random Number:', randomNumber);
 
 let history = []
 
 function getUserInput() {
-  let userGuessedNumber = document.getElementById('userGuess').value
+  const userGuessedNumber = parseInt(document.getElementById('userGuess').value)
   if (userGuessedNumber == '') return false
   document.getElementById('userGuess').value = ''
-  userGuessedNumber = parseInt(userGuessedNumber)
   return userGuessedNumber
 }
 
 function renderHistory() {
-  const historyHTML = history.map(guess => {
-    return `<li>${guess}</li>`
-  })
+  const historyHTML = history.map(guess => `<li>${guess}</li>`)
   document.getElementById('history').innerHTML = historyHTML.join(', ')
 }
 
-function promptUser(userGuessedNumber) {
-  let prompt = ''
-  if (userGuessedNumber > randomNumber) {
-    prompt = `Too High with ${userGuessedNumber}.<br> ${numberOfAvailableGuesses - 1} remaining.`
-  } else if (userGuessedNumber < randomNumber) {
-    prompt = `Too Low with ${userGuessedNumber}.<br> ${numberOfAvailableGuesses - 1} remaining.`
-  } else if (userGuessedNumber == randomNumber) {
-    prompt = `You guessed correctly with ${userGuessedNumber}`
+function promptUser(guess) {
+  let text = ''
+  if (guess > randomNumber) {
+    text = `Too High with ${guess}.<br> ${numberOfAvailableGuesses - 1} remaining.`
+  } else if (guess < randomNumber) {
+    text = `Too Low with ${guess}.<br> ${numberOfAvailableGuesses - 1} remaining.`
+  } else if (guess == randomNumber) {
+    text = "You Win!"
   } else {
-    prompt = "Please enter a number value"
+    text = "Please enter a number value"
   }
-  
-  document.getElementById('prompt').innerHTML = prompt
+
+  prompt.innerHTML = text
+}
+
+function updateGame(guess) {
+  history.push(guess)
+  renderHistory()
+  promptUser(guess)
 }
 
 function guessNumber() {
-  const userGuessedNumber = getUserInput()
-  if (userGuessedNumber === false) return
-  if (history.includes(userGuessedNumber)) {
-    document.getElementById('prompt').innerHTML = `You've guessed ${userGuessedNumber} already`
+  const guess = getUserInput()
+  if (numberOfAvailableGuesses === 0) return
+  if (guess === false) return
+  if (history.includes(guess)) {
+    prompt.innerHTML = `You've guessed ${guess} already`
     return
   }
-  history.push(userGuessedNumber)
-  renderHistory()
 
-  promptUser(userGuessedNumber)
+  updateGame(guess)
 
   numberOfAvailableGuesses -= 1
-  if (numberOfAvailableGuesses === 0) endGame()
+  if (numberOfAvailableGuesses === 0) endGame(guess)
 }
 
-function endGame() {
-  if (numberOfAvailableGuesses === 0) { 
-    document.getElementById('prompt').innerHTML = "Out of guesses. You lose =("
-    document.getElementById("guessButton").disabled = true;
-  }
+function endGame(guess) {
+  text = guess === randomNumber ? "You Win!" : "Out of guesses. You lose =("
+  prompt.innerHTML = text
+  document.getElementById("guessButton").disabled = true;
 }
 
 function resetGame() {
@@ -65,6 +66,7 @@ function resetGame() {
   document.getElementById('userGuess').value = ''
   document.getElementById('history').innerHTML = ''
   randomNumber = Math.floor(Math.random() * 100 + 1)
+  console.log('New Random Number:', randomNumber);
   document.getElementById("guessButton").disabled = false;
-  document.getElementById('prompt').innerHTML = `Remaining guesses ${numberOfAvailableGuesses}`
+  prompt.innerHTML = `Remaining guesses ${numberOfAvailableGuesses}`
 }
