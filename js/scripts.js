@@ -38,6 +38,7 @@ function promptUser(userGuessedNumber) {
 
 function guessNumber() {
   const userGuessedNumber = getUserInput()
+  if (userGuessedNumber === false) return
   if (history.includes(userGuessedNumber)) {
     document.getElementById('prompt').innerHTML = `You've guessed ${userGuessedNumber} already`
     return
