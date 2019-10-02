@@ -17,7 +17,7 @@ Demo online at [this link.](https://festive-thompson-5eeb3f.netlify.com/)
 The following **functionalities** are completed:
 
 * [x] User is prompted to play the game
-* [x] User starts game with 5 guesses
+* [x] User starts game with 3 guesses
 * [x] User can guess a number using an input.
 * [x] When the user guesses the input is cleared.
 * [x] User's guesses are limited to 5

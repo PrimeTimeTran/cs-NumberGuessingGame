@@ -1,40 +1,32 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-
-  <title>Number Guessing</title>
-  <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
-
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+  <title>Number Guessing Game</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-  <div class="container d-flex p-2 flex-column" style="justify-content: center; align-items: center; margin-top: 20vh; border: 10px solid black; border-radius: 25px">
-    <h3 id="userPrompt" >
-      Guess a number between 1-100 and win!
-    </h3>
-    <h1 id="numberOfRemainingGuesses" style="font-size: 100px">
-      5
-    </h1>
-    <input type="text" id="guess"/>
-    <button class="btn btn-primary btn-lg " style="margin-top: 15px" onclick="guessNumber()">
-      Guess!
-    </button>
-    <div class="alert" style="visibility: hidden; margin-top: 15px" role="alert" id="guessPrompt">
-      
-      </div>
-    <div class="container col-12" style="display: flex; justify-content: center; margin-top: 15px">
-      <button id="resetGameButton" class="btn btn-success btn-lg" style="visibility: hidden" onclick="resetGame()">
-        Reset Game!
-      </button>
+  <div class="container">
+    <div class="gameContainer">
+      <h1 class="prompt">Number Guessing Game</h1>
+      <h3 id="prompt" class="prompt"></h3>
+      <input id="userGuess" type="number" autofocus />
+      <br>
+      <button id="guessButton" onclick="guessNumber()" class="btn btn-primary btn-lg">Guess</button>
+      <br>
+      <button id="reset" onclick="resetGame()" class="btn btn-danger">Reset</button>
+      <h3>History</h3>
+      <ul id="history"></ul>
     </div>
   </div>
-
+  <footer>
+      Made with ❤️ by <a href="https://www.PrimeTimeTran.com">PrimeTimeTran</a>
+    </footer>
   <script src="js/scripts.js"></script>
 </body>
 </html>
