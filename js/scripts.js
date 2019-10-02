@@ -70,3 +70,11 @@ function resetGame() {
   document.getElementById("guessButton").disabled = false;
   prompt.innerHTML = `Remaining guesses ${numberOfAvailableGuesses}`
 }
+
+
+const node = document.getElementById("userGuess");
+node.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+      guessNumber()
+    }
+});
