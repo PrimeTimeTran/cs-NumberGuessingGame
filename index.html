@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Number Guessing Game</title>
   <meta charset="UTF-8">
@@ -10,10 +11,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-  <div class="container">
-    <div class="gameContainer">
-      <h1 class="prompt">Number Guessing Game</h1>
+
+<body class="d-flex flex-column text-white">
+  <section class="container d-flex align-items-center justify-content-center">
+    <div class="d-flex flex-column border border-white align-items-center justify-content-center gameContainer">
+      <h1 class="text-align-center prompt">Number Guessing Game</h1>
       <h3 id="prompt" class="prompt"></h3>
       <input id="userGuess" type="number" autofocus />
       <br>
@@ -21,12 +23,13 @@
       <br>
       <button id="reset" onclick="resetGame()" class="btn btn-danger">Reset</button>
       <h3>History</h3>
-      <ul id="history"></ul>
+      <ul id="history" class="d-flex align-items-center justify-content-center"></ul>
     </div>
-  </div>
-  <footer>
-      Made with ❤️ by <a href="https://www.github.com/PrimeTimeTran">PrimeTimeTran</a>
-    </footer>
+  </section>
+  <footer class="d-flex align-items-center justify-content-center bg-dark border-top p-3">
+    Made with ❤️ by <a href="https://www.github.com/PrimeTimeTran" class="ml-1">PrimeTimeTran</a>
+  </footer>
   <script src="js/scripts.js"></script>
 </body>
+
 </html>

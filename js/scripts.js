@@ -71,10 +71,14 @@ function resetGame() {
   prompt.innerHTML = `Remaining guesses ${numberOfAvailableGuesses}`
 }
 
+function setupListeners() {
+  const node = document.getElementById("userGuess");
+  node.addEventListener("keyup", function(event) {
+      if (event.key === "Enter") {
+        guessNumber()
+      }
+  });
+}
 
-const node = document.getElementById("userGuess");
-node.addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
-      guessNumber()
-    }
-});
+setupListeners()
+

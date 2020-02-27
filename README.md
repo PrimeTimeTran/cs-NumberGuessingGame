@@ -4,13 +4,8 @@ Created with love by: Loi Tran
 
 A game built using HTML, CSS, and JS. The game asks the user to guess a number between 1-100. The user has 5 guesses to guess correctly!
 
-## Try it out
-
-Demo online at [this link.](https://festive-thompson-5eeb3f.netlify.com/)
-
-## Video Walkthrough
-
-![Demo](./NumberGuessing.gif)
+![Demo](https://i.imgur.com/yx2TBLD.gif)
+[Demo](https://cs-numberguessinggame.netlify.com)
 
 ## User Stories
 
@@ -32,7 +27,7 @@ The following **functionalities** are completed:
 
 Time spent: **3** hours spent in total.
 
-I leanred how to use HTML, CSS, Bootstrap, and JS together to add structure, styling, beautiful, and complicated behavior to a web application.
+I learned how to use HTML, CSS, Bootstrap, and JS together to add structure, styling, beautiful, and complicated behavior to a web application.
 
 ## License
 
@@ -49,4 +44,3 @@ I leanred how to use HTML, CSS, Bootstrap, and JS together to add structure, sty
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-
