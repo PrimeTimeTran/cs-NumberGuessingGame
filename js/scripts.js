@@ -20,12 +20,13 @@ function renderHistory() {
 
 function promptUser(guess) {
   let text = ''
+  
   if (guess > randomNumber) {
-    text = `Too High with ${guess}.<br> ${numberOfAvailableGuesses - 1} remaining.`
+    text = `Too high with <span style="color: red">${guess}</span>...<br> ${numberOfAvailableGuesses - 1} guesses remaining.`
   } else if (guess < randomNumber) {
-    text = `Too Low with ${guess}.<br> ${numberOfAvailableGuesses - 1} remaining.`
+    text = `Too low with <span style="color: red">${guess}</span>...<br> ${numberOfAvailableGuesses - 1} guesses remaining.`
   } else if (guess == randomNumber) {
-    text = "You Win!"
+    text = `<span style="color: green">You Win!</span>!`
   } else {
     text = "Please enter a number value"
   }
@@ -81,4 +82,3 @@ function setupListeners() {
 }
 
 setupListeners()
-
